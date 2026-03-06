@@ -11,7 +11,7 @@ public class Main {
 
         do {
 
-            System.out.println("\n=== SISTEMA DE SÓCIOS ===");
+            System.out.println("=== SISTEMA DE SÓCIOS ===");
             System.out.println("1 - Cadastrar Sócio");
             System.out.println("2 - Listar Sócios");
             System.out.println("3 - Remover sócio");
@@ -58,11 +58,11 @@ public class Main {
                     sistema.removerSocio(cpfRemover);
                     break;
 
-                case 4:
+                case 5:
                     System.out.println("Encerrando sistema...");
                     break;
 
-                case 5:
+                case 4:
                     System.out.println("Digite o CPF do Sócio: ");
                     String cpfBusca = scanner.nextLine();
 
@@ -74,7 +74,7 @@ public class Main {
                     System.out.println("Opção inválida");
             }
 
-        } while (opcao != 4);
+        } while (opcao != 5);
 
         scanner.close();
     }
