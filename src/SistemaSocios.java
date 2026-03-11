@@ -1,12 +1,19 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class SistemaSocios {
 
-    ArrayList<Socio> socios = new ArrayList<>();
+    private final List<Socio> socios = new ArrayList<>();
+    private int proximoId = 1;
 
-    public void cadastrarSocio(Socio socio) {
+    public void cadastrarSocio(String nome, String cpf, String email, String telefone, String plano, int idade) {
+
+        Socio socio = new Socio(proximoId, nome, cpf, email, telefone, plano, idade);
         socios.add(socio);
-        System.out.println("Sócio cadastrado com sucesso!");
+
+        System.out.println("Sócio cadastrado com sucesso! ID: " + proximoId);
+
+        proximoId++;
     }
 
     public void listarSocios() {
@@ -17,33 +24,54 @@ public class SistemaSocios {
         }
 
         for (Socio s : socios) {
-            System.out.println("Nome: " + s.nome);
-            System.out.println("Idade: " + s.idade);
-            System.out.println("CPF: " + s.cpf);
-            System.out.println("Plano: " + s.plano);
             s.exibirDados();
         }
     }
-    public void removerSocio(String cpf){
+
+    public Socio buscarSocioPorId(int id) {
+
         for (Socio s : socios) {
-            if (s.cpf.equals(cpf)) {
-        socios.remove(s);
-        System.out.println("Sócio removido. ");
-        return;
+            if (s.getId() == id) {
+                return s;
             }
         }
-        System.out.println("Sócio não encontrado.");
+
+        return null;
     }
-    public void  buscarSocio(String cpf) {
+
+    public void removerSocio(int id) {
+
+        Socio socioRemover = null;
+
         for (Socio s : socios) {
-            if (s.cpf.equals(cpf)) {
-                System.out.println("Sócio Encontrado:");
-                System.out.println("Nome: " + s.nome);
-                System.out.println("Plano: " + s.plano);
-                System.out.println("Email: " + s.email);
-                return;
+            if (s.getId() == id) {
+                socioRemover = s;
+                break;
             }
         }
-        System.out.println("Sócio não encontrado.");
+
+        if (socioRemover != null) {
+            socios.remove(socioRemover);
+            System.out.println("Sócio removido com sucesso.");
+        } else {
+            System.out.println("Sócio não encontrado.");
+        }
+    }
+
+    public void atualizarSocio(int id, String novoEmail, String novoTelefone, String novoPlano) {
+
+        Socio socio = buscarSocioPorId(id);
+
+        if (socio != null) {
+
+            socio.setEmail(novoEmail);
+            socio.setTelefone(novoTelefone);
+            socio.setPlano(novoPlano);
+
+            System.out.println("Dados atualizados com sucesso!");
+
+        } else {
+            System.out.println("Sócio não encontrado.");
+        }
     }
 }

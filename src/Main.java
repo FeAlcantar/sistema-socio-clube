@@ -11,19 +11,22 @@ public class Main {
 
         do {
 
-            System.out.println("=== SISTEMA DE SÓCIOS ===");
-            System.out.println("1 - Cadastrar Sócio");
-            System.out.println("2 - Listar Sócios");
-            System.out.println("3 - Remover sócio");
-            System.out.println("4 - Buscar Sócio por CPF");
-            System.out.println("5 - Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("\n=== Sistema de Gestão de Sócios ===");
+            System.out.println("1 - Cadastrar sócio");
+            System.out.println("2 - Listar sócios");
+            System.out.println("3 - Buscar sócio por ID");
+            System.out.println("4 - Atualizar sócio");
+            System.out.println("5 - Remover sócio");
+            System.out.println("0 - Sair");
 
+            System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
 
-            switch(opcao) {
+            switch (opcao) {
+
                 case 1:
+
                     System.out.print("Nome: ");
                     String nome = scanner.nextLine();
 
@@ -36,45 +39,73 @@ public class Main {
                     System.out.print("Telefone: ");
                     String telefone = scanner.nextLine();
 
-                    System.out.print("Plano (Bronze/Prata/Ouro): ");
+                    System.out.print("Plano: ");
                     String plano = scanner.nextLine();
 
-                    System.out.println("Idade");
+                    System.out.print("Idade: ");
                     int idade = scanner.nextInt();
                     scanner.nextLine();
 
-
-                    Socio socio = new Socio(nome, cpf, email, telefone, plano, idade);
-                    sistema.cadastrarSocio(socio);
+                    sistema.cadastrarSocio(nome, cpf, email, telefone, plano, idade);
                     break;
 
                 case 2:
+
                     sistema.listarSocios();
                     break;
 
                 case 3:
-                    System.out.println("Digite o CPF do sócio para remover: ");
-                    String cpfRemover = scanner.nextLine();
-                    sistema.removerSocio(cpfRemover);
-                    break;
 
-                case 5:
-                    System.out.println("Encerrando sistema...");
+                    System.out.print("Digite o ID do sócio: ");
+                    int idBusca = scanner.nextInt();
+
+                    Socio socio = sistema.buscarSocioPorId(idBusca);
+
+                    if (socio != null) {
+                        socio.exibirDados();
+                    } else {
+                        System.out.println("Sócio não encontrado.");
+                    }
+
                     break;
 
                 case 4:
-                    System.out.println("Digite o CPF do Sócio: ");
-                    String cpfBusca = scanner.nextLine();
 
-                    sistema.buscarSocio(cpfBusca);
+                    System.out.print("Digite o ID do sócio: ");
+                    int idAtualizar = scanner.nextInt();
+                    scanner.nextLine();
 
+                    System.out.print("Novo email: ");
+                    String novoEmail = scanner.nextLine();
+
+                    System.out.print("Novo telefone: ");
+                    String novoTelefone = scanner.nextLine();
+
+                    System.out.print("Novo plano: ");
+                    String novoPlano = scanner.nextLine();
+
+                    sistema.atualizarSocio(idAtualizar, novoEmail, novoTelefone, novoPlano);
+                    break;
+
+                case 5:
+
+                    System.out.print("Digite o ID do sócio para remover: ");
+                    int idRemover = scanner.nextInt();
+
+                    sistema.removerSocio(idRemover);
+                    break;
+
+                case 0:
+
+                    System.out.println("Encerrando sistema...");
                     break;
 
                 default:
-                    System.out.println("Opção inválida");
+
+                    System.out.println("Opção inválida.");
             }
 
-        } while (opcao != 5);
+        } while (opcao != 0);
 
         scanner.close();
     }
