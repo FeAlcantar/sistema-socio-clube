@@ -10,7 +10,7 @@ Projeto desenvolvido em Java com o objetivo de praticar conceitos de Programaç�
 - Atualização de dados
 - Remoção de sócio
 
-## Tecnologias utilizadas
+## O que foi utilizado
 
 - Java
 - Programação Orientada a Objetos (POO)
