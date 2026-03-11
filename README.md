@@ -1,61 +1,36 @@
-# Sistema de Sócios - Clube de Futebol
+# Sistema de Sócios de Clube
 
-Sistema desenvolvido em **Java** para gerenciamento de sócios de um clube esportivo.
-
-O projeto simula um sistema simples utilizado por clubes para controle de associados, permitindo realizar operações básicas através de um **menu interativo no terminal**.
-
----
+Projeto desenvolvido em Java com o objetivo de praticar conceitos de Programação Orientada a Objetos e estruturação de sistemas simples.
 
 ## Funcionalidades
 
 - Cadastro de sócios
-- Listagem de sócios cadastrados
-- Busca de sócio por CPF
+- Listagem de sócios
+- Busca de sócio por ID
+- Atualização de dados
 - Remoção de sócio
-- Menu interativo no terminal
-
----
 
 ## Tecnologias utilizadas
 
 - Java
 - Programação Orientada a Objetos (POO)
-- IntelliJ IDEA
-- Git
-- GitHub
+- Estrutura de dados com ArrayList
 
----
+## Estrutura do projeto
 
-## Estrutura do Projeto
+src/
+- Main.java → Classe responsável pela execução do sistema
+- SistemaSocios.java → Regras de negócio e gerenciamento dos sócios
+- Socio.java → Classe modelo representando um sócio
 
+## Objetivo do projeto
 
-src
-├── Main.java
-├── Socio.java
-└── SistemaSocios.java
+Praticar conceitos fundamentais de desenvolvimento backend como:
 
-
----
-
-## Como executar o projeto
-
-1. Clone este repositório
-2. Abra o projeto no IntelliJ IDEA
-3. Execute a classe:
-
-
-Main.java
-
-
-O sistema abrirá um menu no terminal permitindo gerenciar os sócios.
-
----
-
-## Objetivo do Projeto
-
-Este projeto foi desenvolvido como prática de **Programação Orientada a Objetos em Java**, simulando um sistema simples de gerenciamento de sócios de um clube esportivo.
-
----
+- organização de código
+- separação de responsabilidades
+- manipulação de listas
+- criação de métodos reutilizáveis
 
 ## Autor
 
